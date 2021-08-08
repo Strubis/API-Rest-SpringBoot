@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Emerson
  */
+
 @RestController
 @RequestMapping( "/api/v1/people" )
 public class PersonController {
