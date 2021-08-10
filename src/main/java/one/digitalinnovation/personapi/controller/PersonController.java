@@ -61,4 +61,40 @@ public class PersonController {
     public List<PersonDTO> listAll(){
         return personService.listAll();
     }
+    
+    /**
+     * Método para retornar uma pessoa cadastrada no banco de dados.
+     * 
+     * @param id o identificador para encontrar a pessoa desejada
+     * @return Os dados da pessoa, se for encontrada
+     * @throws PersonNotFoundException, caso a pessoa não seja encontrada
+     */
+    @GetMapping( "/{id}" )
+    public PersonDTO listById(@PathVariable Long id) throws PersonNotFoundException{
+        return personService.listById( id );
+    }
+    
+    /**
+     * Apaga uma pessoa do nosso banco de dados.
+     * 
+     * @param id o identificador para apagar a pessoa desejada
+     * @throws PersonNotFoundException, caso a pessoa não seja encontrada
+     */
+    @DeleteMapping( "/{id}" )
+    @ResponseStatus( HttpStatus.NO_CONTENT )
+    public void deleteById(@PathVariable Long id) throws PersonNotFoundException{
+        personService.deleteById( id );
+    }
+    
+    /**
+     * Atualiza os dados de uma pessoa do nosso banco de dados.
+     * 
+     * @param id o identificador para apagar a pessoa desejada
+     * @param personDTO os novos dados da pessoa
+     * @throws PersonNotFoundException, caso a pessoa não seja encontrada
+     */
+    @PutMapping( "/{id}" )
+    public MessageResponseDTO updateById(@PathVariable Long id, @RequestBody @Valid PersonDTO personDTO) throws PersonNotFoundException{
+        return personService.updateById( id, personDTO );
+    }
 }
