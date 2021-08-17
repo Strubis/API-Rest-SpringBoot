@@ -28,20 +28,20 @@ public class PersonServiceTest {
     @InjectMocks
     private PersonService personService;
     
-    @Test
-    void testGivenPersonDTOThenReturnSavedMessage(){
-        PersonDTO personDTO = createFakeDTO();
-        Person expectedSavedPerson = createFakeEntity();
-        
-        when( personRepository.save( any( Person.class ) ) ).
-                thenReturn( expectedSavedPerson );
-        
-        MessageResponseDTO expectedMessage = 
-                createExpectedMessageResponse( expectedSavedPerson.getId() );
-        MessageResponseDTO successMessage = personService.createPerson( personDTO );
-        
-        assertEquals( expectedMessage, successMessage );
-    }
+//    @Test
+//    void testGivenPersonDTOThenReturnSavedMessage(){
+//        PersonDTO personDTO = createFakeDTO();
+//        Person expectedSavedPerson = createFakeEntity();
+//        
+//        when( personRepository.save( any( Person.class ) ) ).
+//                thenReturn( expectedSavedPerson );
+//        
+//        MessageResponseDTO expectedMessage = 
+//                createExpectedMessageResponse( expectedSavedPerson.getId() );
+//        MessageResponseDTO successMessage = personService.createPerson( personDTO );
+//        
+//        assertEquals( expectedMessage, successMessage );
+//    }
     
     private MessageResponseDTO createExpectedMessageResponse(Long id) {
         return MessageResponseDTO

@@ -31,11 +31,11 @@ public class PersonService {
 //        this.personMapper = PersonMapper.INSTANCE;
 //    }
     
-    public MessageResponseDTO createPerson(PersonDTO personDTO) {
+    public PersonDTO createPerson(PersonDTO personDTO) {
         Person personToSave = personMapper.toModel(personDTO);
         Person savedPerson = personRepository.save(personToSave);
         
-        return createMessageResponse( savedPerson.getId(), "Created person with ID " );
+        return personMapper.toDTO(savedPerson);
     }
     
     public List<PersonDTO> listAll() {
